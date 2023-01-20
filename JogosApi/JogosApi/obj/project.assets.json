@@ -230,11 +230,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arthur\\source\\repos\\JogosApi\\JogosApi\\JogosApi.csproj",
+      "projectUniqueName": "E:\\Arthur\\JogosApi\\JogosApi\\JogosApi\\JogosApi\\JogosApi.csproj",
       "projectName": "JogosApi",
-      "projectPath": "C:\\Users\\Arthur\\source\\repos\\JogosApi\\JogosApi\\JogosApi.csproj",
+      "projectPath": "E:\\Arthur\\JogosApi\\JogosApi\\JogosApi\\JogosApi\\JogosApi.csproj",
       "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arthur\\source\\repos\\JogosApi\\JogosApi\\obj\\",
+      "outputPath": "E:\\Arthur\\JogosApi\\JogosApi\\JogosApi\\JogosApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
