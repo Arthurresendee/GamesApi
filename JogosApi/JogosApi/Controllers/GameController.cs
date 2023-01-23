@@ -1,5 +1,7 @@
-﻿using JogosApi.Models;
+﻿using JogosApi.Data;
+using JogosApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace JogosApi.Controllers
 {
@@ -7,37 +9,42 @@ namespace JogosApi.Controllers
     [Route("[Controller]")]
     public class GameController : ControllerBase
     {
-        private static List<Game> games = new();
-        private static int _id = 1;
+        private GameContext _context;
+
+        public GameController(GameContext gameContext)
+        {
+            _context = gameContext;
+        }
 
         [HttpPost]
-        public string Add([FromBody]Game game)
+        public IActionResult Add([FromBody] Game game)
         {
-            string mensagem = "Item Adicionado.";
-            games.Add(game);
-            game.Id = _id;
-            _id++;
-            return mensagem;
+            _context.TB_GAMES.Add(game);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new { id = game.Id},game);
         }
 
         [HttpGet]
         public IEnumerable<Game> Get([FromQuery] int skip, int take = 50)
         {
-            return games.Skip(skip).Take(take);
+            return _context.TB_GAMES.Skip(skip).Take(take);
         }
 
         [HttpGet("{id}")]
-        public Game? GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return games.FirstOrDefault(game => game.Id == id);
+            var game = _context.TB_GAMES.FirstOrDefault(game => game.Id == id);
+            if (game == null)
+                return NotFound();
+            return Ok(game);
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(int id,[FromBody]Game newGame)
+        public IActionResult Put(int id,[FromBody]Game newGame)
         {
             try
             {
-                var game = games.First(g => g.Id == id);
+                var game = _context.TB_GAMES.FirstOrDefault(g => g.Id == id);
                 if (game != null)
                 {
                     game.Name = newGame.Name;
@@ -47,7 +54,24 @@ namespace JogosApi.Controllers
             }
             catch (InvalidOperationException ex) 
             {
-                Console.WriteLine("sasa");
+                return NotFound();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var game = _context.TB_GAMES.First(g => g.Id == id);
+                if (game != null)
+                {
+                    _context.TB_GAMES.Remove(game);
+                }
+                return Ok();
+            }
+            catch (Exception)
+            {
                 return NotFound();
             }
         }
