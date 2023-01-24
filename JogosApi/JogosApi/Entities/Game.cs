@@ -6,11 +6,11 @@ namespace JogosApi.Models
     public class Game
     {
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "The field name is required.")]
         public string Name { get; set; }
-
-        [StringLength(40)]
+        public string? CreatoBy { get; set; }
+        public string? Owner { get; set; }
+        public string? Description { get; set; }
         public string? Platform { get; set; }
+        public DateTime? ReleaseDate { get; set; }
     }
 }
