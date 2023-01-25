@@ -47,23 +47,17 @@ namespace JogosApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id,[FromBody]Jogo novoJogo)
+        public IActionResult Put(int id,[FromBody]UpdateJogoDto jogoDto)
         {
-            try
-            {
-                var jogo = _context.TB_GAMES.FirstOrDefault(g => g.Id == id);
-                if (jogo != null)
-                {
-                    jogo.Nome = novoJogo.Nome;
-                    jogo.Plataforma = novoJogo.Plataforma;
-                }
-                return Ok();
-            }
-            catch (InvalidOperationException ex) 
-            {
+            var jogo = _context.TB_GAMES.FirstOrDefault(g => g.Id == id);
+
+            if (jogo == null)
                 return NotFound();
-            }
-        }
+            _mapper.Map(jogoDto, jogo);
+            _context.SaveChanges();
+            return NoContent();
+
+    }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

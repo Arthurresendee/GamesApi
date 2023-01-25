@@ -9,8 +9,8 @@ public class JogoProfile : Profile
 {
     public JogoProfile()
     {
-       CreateMap<CreateJogoDto, Jogo>();
-
+        CreateMap<CreateJogoDto, Jogo>();
+        CreateMap<UpdateJogoDto, Jogo>().ReverseMap();
     }
 
 }
