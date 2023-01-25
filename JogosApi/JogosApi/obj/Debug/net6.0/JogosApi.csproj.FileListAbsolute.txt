@@ -80,3 +80,5 @@ E:\Arthur\JogosApi\JogosApi\JogosApi\JogosApi\obj\Debug\net6.0\refint\JogosApi.d
 E:\Arthur\JogosApi\JogosApi\JogosApi\JogosApi\obj\Debug\net6.0\JogosApi.pdb
 E:\Arthur\JogosApi\JogosApi\JogosApi\JogosApi\obj\Debug\net6.0\JogosApi.genruntimeconfig.cache
 E:\Arthur\JogosApi\JogosApi\JogosApi\JogosApi\obj\Debug\net6.0\ref\JogosApi.dll
+E:\Arthur\JogosApi\JogosApi\JogosApi\JogosApi\bin\Debug\net6.0\AutoMapper.dll
+E:\Arthur\JogosApi\JogosApi\JogosApi\JogosApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

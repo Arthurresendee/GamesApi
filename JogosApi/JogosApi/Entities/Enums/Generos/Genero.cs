@@ -1,6 +1,6 @@
 ﻿namespace JogosApi.Models.Enums.Generos
 {
-    public enum Categoria
+    public enum Genero
     {  
         Nenhum = 0,
         Acao = 1,

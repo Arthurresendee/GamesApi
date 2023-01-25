@@ -1,4 +1,4 @@
-﻿using JogosApi.Entities.Enums.Generos;
+﻿using JogosApi.Entities.Enums.Genero.SubGenero;
 using JogosApi.Models.Enums.Generos;
 using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
@@ -14,7 +14,7 @@ namespace JogosApi.Models
         public string? Descricao { get; set; }
         public string? Plataforma { get; set; }
         public DateTime? DataLancamento { get; set; }
-        public Categoria? Categoria { get; set; }
+        public Genero? Genero { get; set; }
         public Acao? Acao { get; set; }
         public Aventura? Aventura { get; set; }
         public EsporteECorrida? EsporteECorrida { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace JogosApi.Entities.Enums.Generos
+﻿namespace JogosApi.Entities.Enums.Genero.SubGenero
 {
     public enum Acao
     {
@@ -9,6 +9,6 @@
         PlataformasECorridasInterminaveis = 4,
         ShootEmUp = 5,
         TiroEmPrimeiraPessoa = 6,
-        TiroEmTerceiraPessoa = 7 
+        TiroEmTerceiraPessoa = 7
     }
 }

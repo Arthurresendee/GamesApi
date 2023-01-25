@@ -1,4 +1,4 @@
-﻿namespace JogosApi.Entities.Enums.Generos
+﻿namespace JogosApi.Entities.Enums.Genero.SubGenero
 {
     public enum Simulacao
     {

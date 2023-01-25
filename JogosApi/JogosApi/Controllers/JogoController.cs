@@ -1,6 +1,9 @@
-﻿using JogosApi.Data;
+﻿using AutoMapper;
+using JogosApi.Data;
+using JogosApi.Data.Dtos;
 using JogosApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace JogosApi.Controllers
@@ -10,18 +13,22 @@ namespace JogosApi.Controllers
     public class JogoController : ControllerBase
     {
         private JogoContext _context;
+        private IMapper _mapper;
 
-        public JogoController(JogoContext gameContext)
+        public JogoController(JogoContext gameContext,IMapper mapper)
         {
             _context = gameContext;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] Jogo jogo)
+        public IActionResult Add([FromBody] CreateJogoDto jogoDto)
         {
+            Jogo jogo = _mapper.Map<Jogo>(jogoDto);
+
             _context.TB_GAMES.Add(jogo);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetById), new { id = jogo.Id},jogo);
+            return CreatedAtAction(nameof(GetById), new { id = jogo }, jogo);
         }
 
         [HttpGet]

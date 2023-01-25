@@ -1,25 +1,31 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using JogosApi.Entities.Enums.Genero.SubGenero;
+using JogosApi.Models.Enums.Generos;
+using System.ComponentModel.DataAnnotations;
 using System.Net.Sockets;
 
 namespace JogosApi.Data.Dtos
 {
     public class CreateJogoDto
     {
-        [Required(ErrorMessage = "The field name is required.")]
-        //[StringLength(maximumLength: 5, MinimumLength = 2)]
-        public string Name { get; set; }
-
-        [MaxLength(50)]
-        public string? CreatoBy { get; set; }
-
-        [StringLength(30)]
-        public string? Owner { get; set; }
-
+        [StringLength(50)]
+        public string? Nome { get; set; }
+        [StringLength(50)]
+        public string? Criador { get; set; }
+        [StringLength(50)]
+        public string? Proprietario { get; set; }
         [StringLength(200)]
-        public string? Description { get; set; }
-        
-        public string? Platform { get; set; }
-
-        public DateTime? ReleaseDate { get; set; }
+        public string? Descricao { get; set; }
+        [StringLength(50)]
+        public string? Plataforma { get; set; }
+        public DateTime? DataLancamento { get; set; }
+        public Genero? Genero { get; set; }
+        public Acao? Acao { get; set; }
+        public Aventura? Aventura { get; set; }
+        public EsporteECorrida? EsporteECorrida { get; set; }
+        public Estrategia? Estrategia { get; set; }
+        public Jogadores? Jogadores { get; set; }
+        public RPG? RPG { get; set; }
+        public Simulacao? Simulacao { get; set; }
+        public Temas? Temas { get; set; }
     }
 }
