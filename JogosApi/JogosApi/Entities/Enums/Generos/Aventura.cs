@@ -1,7 +1,8 @@
 ﻿namespace JogosApi.Entities.Enums.Generos
 {
-    public enum Adventure
+    public enum Aventura
     {
+        Nenhum = 0,
         Casuais = 1,
         Metroidvania = 2,
         ObjetosEscondidos = 3,

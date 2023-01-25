@@ -1,7 +1,8 @@
 ﻿namespace JogosApi.Entities.Enums.Generos
 {
-    public enum Simulation
+    public enum Simulacao
     {
+        Nenhum = 0,
         ConstrucaoEAutomacao = 1,
         EmpregosEPassatempo = 2,
         Encontros = 3,

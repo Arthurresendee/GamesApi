@@ -4,6 +4,7 @@ using JogosApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JogosApi.Migrations
 {
     [DbContext(typeof(JogoContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20230125140759_Teste Enum de Categoria2")]
+    partial class TesteEnumdeCategoria2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,19 @@ namespace JogosApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("JogosApi.Entities.Enums.Generos.EnumCategoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EnumCategoria");
+                });
 
             modelBuilder.Entity("JogosApi.Models.Jogo", b =>
                 {
@@ -30,16 +46,10 @@ namespace JogosApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("Acao")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Aventura")
-                        .HasColumnType("int");
-
                     b.Property<int?>("Categoria")
                         .HasColumnType("int");
 
-                    b.Property<string>("Criador")
+                    b.Property<string>("CriadoPor")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DataLancamento")
@@ -48,13 +58,7 @@ namespace JogosApi.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EsporteECorrida")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Estrategia")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Jogadores")
+                    b.Property<int?>("EnumCategoria1Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
@@ -67,18 +71,20 @@ namespace JogosApi.Migrations
                     b.Property<string>("Proprietario")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RPG")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Simulacao")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Temas")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
+                    b.HasIndex("EnumCategoria1Id");
+
                     b.ToTable("TB_GAMES");
+                });
+
+            modelBuilder.Entity("JogosApi.Models.Jogo", b =>
+                {
+                    b.HasOne("JogosApi.Entities.Enums.Generos.EnumCategoria", "EnumCategoria1")
+                        .WithMany()
+                        .HasForeignKey("EnumCategoria1Id");
+
+                    b.Navigation("EnumCategoria1");
                 });
 #pragma warning restore 612, 618
         }

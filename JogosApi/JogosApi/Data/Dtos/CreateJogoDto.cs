@@ -3,7 +3,7 @@ using System.Net.Sockets;
 
 namespace JogosApi.Data.Dtos
 {
-    public class CreateGameDto
+    public class CreateJogoDto
     {
         [Required(ErrorMessage = "The field name is required.")]
         //[StringLength(maximumLength: 5, MinimumLength = 2)]

@@ -1,7 +1,8 @@
 ﻿namespace JogosApi.Entities.Enums.Generos
 {
-    public enum Estrategy
+    public enum Estrategia
     {
+        Nenhum = 0,
         CidadesEColonias = 1,
         DefesaETorres = 2,
         EstrategiaBaseadaEmTurnos = 3,

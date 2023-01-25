@@ -7,25 +7,25 @@ namespace JogosApi.Controllers
 {
     [ApiController]
     [Route("[Controller]")]
-    public class GameController : ControllerBase
+    public class JogoController : ControllerBase
     {
-        private GameContext _context;
+        private JogoContext _context;
 
-        public GameController(GameContext gameContext)
+        public JogoController(JogoContext gameContext)
         {
             _context = gameContext;
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] Game game)
+        public IActionResult Add([FromBody] Jogo jogo)
         {
-            _context.TB_GAMES.Add(game);
+            _context.TB_GAMES.Add(jogo);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetById), new { id = game.Id},game);
+            return CreatedAtAction(nameof(GetById), new { id = jogo.Id},jogo);
         }
 
         [HttpGet]
-        public IEnumerable<Game> Get([FromQuery] int skip, int take = 50)
+        public IEnumerable<Jogo> Get([FromQuery] int skip, int take = 50)
         {
             return _context.TB_GAMES.Skip(skip).Take(take);
         }
@@ -33,22 +33,22 @@ namespace JogosApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var game = _context.TB_GAMES.FirstOrDefault(game => game.Id == id);
-            if (game == null)
+            var jogo = _context.TB_GAMES.FirstOrDefault(jogo => jogo.Id == id);
+            if (jogo == null)
                 return NotFound();
-            return Ok(game);
+            return Ok(jogo);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id,[FromBody]Game newGame)
+        public IActionResult Put(int id,[FromBody]Jogo novoJogo)
         {
             try
             {
-                var game = _context.TB_GAMES.FirstOrDefault(g => g.Id == id);
-                if (game != null)
+                var jogo = _context.TB_GAMES.FirstOrDefault(g => g.Id == id);
+                if (jogo != null)
                 {
-                    game.Name = newGame.Name;
-                    game.Platform = newGame.Platform;
+                    jogo.Nome = novoJogo.Nome;
+                    jogo.Plataforma = novoJogo.Plataforma;
                 }
                 return Ok();
             }
@@ -63,10 +63,10 @@ namespace JogosApi.Controllers
         {
             try
             {
-                var game = _context.TB_GAMES.First(g => g.Id == id);
-                if (game != null)
+                var jogo = _context.TB_GAMES.First(g => g.Id == id);
+                if (jogo != null)
                 {
-                    _context.TB_GAMES.Remove(game);
+                    _context.TB_GAMES.Remove(jogo);
                 }
                 return Ok();
             }

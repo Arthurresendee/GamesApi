@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JogosApi.Migrations
 {
-    [DbContext(typeof(GameContext))]
+    [DbContext(typeof(JogoContext))]
     [Migration("20230123182751_Initial Project")]
     partial class InitialProject
     {

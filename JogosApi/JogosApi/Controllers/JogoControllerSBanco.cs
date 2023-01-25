@@ -5,13 +5,13 @@ namespace JogosApi.Controllers
 {
     [ApiController]
     [Route("[Controller]")]
-    public class GameControllerSBanco : ControllerBase
+    public class JogoControllerSBanco : ControllerBase
     {
-        private static List<Game> games = new();                                //toda vez que faco uma requisicao ele passa por toda classe de controller, assim sempre passando pela lista e instanciando uma nova, colocando o modificador como static, evitamos de ser criada a cada requisicao, assim pertencendo a propria classe e não á uma instância da mesma.
+        private static List<Jogo> games = new();                                //toda vez que faco uma requisicao ele passa por toda classe de controller, assim sempre passando pela lista e instanciando uma nova, colocando o modificador como static, evitamos de ser criada a cada requisicao, assim pertencendo a propria classe e não á uma instância da mesma.
         private static int _id = 1;
 
         [HttpPost]
-        public IActionResult Add([FromBody] Game game)
+        public IActionResult Add([FromBody] Jogo game)
         {
             games.Add(game);
             game.Id = _id;
@@ -21,7 +21,7 @@ namespace JogosApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Game> Get([FromQuery] int skip, int take = 50)
+        public IEnumerable<Jogo> Get([FromQuery] int skip, int take = 50)
         {
             return games.Skip(skip).Take(take);
         }
@@ -36,15 +36,15 @@ namespace JogosApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id,[FromBody]Game newGame)
+        public IActionResult Put(int id,[FromBody]Jogo newGame)
         {
             try
             {
                 var game = games.FirstOrDefault(g => g.Id == id);
                 if (game != null)
                 {
-                    game.Name = newGame.Name;
-                    game.Platform = newGame.Platform;
+                    game.Nome = newGame.Nome;
+                    game.Plataforma = newGame.Plataforma;
                 }
                 return Ok();
             }
